@@ -318,6 +318,33 @@ body {
     line-height: 1.8;
 }
 
+/* Guestbook Section */
+.guestbook {
+    padding: 40px 20px;
+    background: white;
+}
+
+.guestbook h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #c19a6b;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.guestbook-desc {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.comments-container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
 /* Footer */
 footer {
     text-align: center;
