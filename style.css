@@ -165,6 +165,56 @@ body {
     overflow: hidden;
 }
 
+/* Navigation Links */
+.navigation-links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.navigation-links h4 {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #333;
+    background: white;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+    min-width: 90px;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    border-color: #bbb;
+}
+
+.nav-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
 /* Gallery Section */
 .gallery {
     padding: 40px 20px;
