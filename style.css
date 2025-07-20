@@ -155,17 +155,14 @@ body {
     color: #888;
 }
 
-.map-placeholder {
-    text-align: center;
-}
-
-.map-placeholder img {
+.map-container {
     width: 100%;
     max-width: 350px;
     height: 200px;
-    object-fit: cover;
     border-radius: 10px;
     border: 1px solid #eee;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 /* Gallery Section */

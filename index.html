@@ -6,6 +6,7 @@
     <title>결혼합니다 💕</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=wuc82dalfo"></script>
 </head>
 <body>
     <div class="container">
@@ -24,14 +25,14 @@
         <section class="couple-names">
             <div class="groom">
                 <h3>신랑</h3>
-                <h2>김○○</h2>
-                <p>김아버지 · 김어머니의 장남</p>
+                <h2>김재원</h2>
+                <p>김남식 · 이효순의 차남</p>
             </div>
             <div class="divider">♥</div>
             <div class="bride">
                 <h3>신부</h3>
-                <h2>이○○</h2>
-                <p>이아버지 · 이어머니의 장녀</p>
+                <h2>이솔</h2>
+                <p>이어머니의 장녀</p>
             </div>
         </section>
 
@@ -39,8 +40,8 @@
         <section class="wedding-info">
             <div class="date-time">
                 <h3>Wedding Day</h3>
-                <div class="date">2024년 12월 14일 토요일</div>
-                <div class="time">오후 2시 30분</div>
+                <div class="date">2025년 10월 26일 일요일</div>
+                <div class="time">오후 12시 50분</div>
             </div>
         </section>
 
@@ -48,15 +49,13 @@
         <section class="venue">
             <h3>예식장 안내</h3>
             <div class="venue-info">
-                <h4>○○컨벤션 웨딩홀</h4>
-                <p class="address">서울특별시 강남구 테헤란로 123<br>○○빌딩 3층 그랜드볼룸</p>
+                <h4>빌라드지디 안양</h4>
+                <p class="address">경기 안양시 동안구 관악대로254<br>1층 갤러리아 홀</p>
                 <div class="contact">
-                    <p>문의: 02-1234-5678</p>
+                    <p>문의: 031-382-3838</p>
                 </div>
             </div>
-            <div class="map-placeholder">
-                <img src="https://via.placeholder.com/350x200/e9ecef/6c757d?text=Map+Location" alt="지도">
-            </div>
+            <div id="map" class="map-container"></div>
         </section>
 
         <!-- Gallery Section -->
@@ -85,27 +84,23 @@
                 <div class="groom-contact">
                     <h4>신랑측</h4>
                     <div class="contact-item">
-                        <span>신랑 김○○</span>
-                        <a href="tel:010-1234-5678">010-1234-5678</a>
+                        <span>신랑 김재원</span>
+                        <a href="tel:010-7231-1355">010-7231-1355</a>
                     </div>
                     <div class="contact-item">
-                        <span>아버지 김아버지</span>
-                        <a href="tel:010-1111-2222">010-1111-2222</a>
+                        <span>아버지 김남식</span>
+                        <a href="tel:010-3065-5955">010-3065-5955</a>
                     </div>
                     <div class="contact-item">
-                        <span>어머니 김어머니</span>
-                        <a href="tel:010-3333-4444">010-3333-4444</a>
+                        <span>어머니 이효순</span>
+                        <a href="tel:010-5133-5737">010-5133-5737</a>
                     </div>
                 </div>
                 <div class="bride-contact">
                     <h4>신부측</h4>
                     <div class="contact-item">
-                        <span>신부 이○○</span>
-                        <a href="tel:010-5678-9012">010-5678-9012</a>
-                    </div>
-                    <div class="contact-item">
-                        <span>아버지 이아버지</span>
-                        <a href="tel:010-5555-6666">010-5555-6666</a>
+                        <span>신부 이솔</span>
+                        <a href="tel:010-8571-6512">010-8571-6512</a>
                     </div>
                     <div class="contact-item">
                         <span>어머니 이어머니</span>
@@ -136,5 +131,26 @@
             <p>🤍 Thank you for celebrating with us 🤍</p>
         </footer>
     </div>
+
+    <script>
+        function initMap() {
+            var map = new naver.maps.Map('map', {
+                center: new naver.maps.LatLng(37.4015140, 126.9513167),
+                zoom: 16
+            });
+
+            var marker = new naver.maps.Marker({
+                position: new naver.maps.LatLng(37.4015140, 126.9513167),
+                map: map,
+                title: '빌라드지디 안양'
+            });
+        }
+
+        if (typeof naver !== 'undefined') {
+            initMap();
+        } else {
+            window.addEventListener('load', initMap);
+        }
+    </script>
 </body>
 </html>
