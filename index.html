@@ -115,6 +115,85 @@
             </div>
         </section>
 
+        <!-- Account Section -->
+        <section class="account">
+            <h3>마음 전하실 곳</h3>
+            <div class="account-info">
+                <div class="account-section">
+                    <div class="account-header" onclick="toggleAccountList('groom')">
+                        <h4>신랑측</h4>
+                        <span class="toggle-icon rotated" id="groom-icon">▼</span>
+                    </div>
+                    <div class="account-list collapsed" id="groom-list">
+                        <div class="account-item">
+                            <div class="account-details">
+                                <span class="bank-name">신한은행</span>
+                                <span class="account-number">110-123-456789</span>
+                                <span class="account-holder">김재원</span>
+                            </div>
+                            <div class="account-buttons">
+                                <button class="copy-btn" onclick="copyAccount('110-123-456789', '김재원')">복사</button>
+                                <button class="pay-btn" onclick="openKakaoPay()">PAY</button>
+                            </div>
+                        </div>
+                        <div class="account-item">
+                            <div class="account-details">
+                                <span class="bank-name">국민은행</span>
+                                <span class="account-number">123-456-789012</span>
+                                <span class="account-holder">김남식 (신랑 아버지)</span>
+                            </div>
+                            <div class="account-buttons">
+                                <button class="copy-btn" onclick="copyAccount('123-456-789012', '김남식')">복사</button>
+                                <button class="pay-btn" onclick="openKakaoPay()">PAY</button>
+                            </div>
+                        </div>
+                        <div class="account-item">
+                            <div class="account-details">
+                                <span class="bank-name">우리은행</span>
+                                <span class="account-number">345-678-901234</span>
+                                <span class="account-holder">이효순 (신랑 어머니)</span>
+                            </div>
+                            <div class="account-buttons">
+                                <button class="copy-btn" onclick="copyAccount('345-678-901234', '이효순')">복사</button>
+                                <button class="pay-btn" onclick="openKakaoPay()">PAY</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="account-section">
+                    <div class="account-header" onclick="toggleAccountList('bride')">
+                        <h4>신부측</h4>
+                        <span class="toggle-icon rotated" id="bride-icon">▼</span>
+                    </div>
+                    <div class="account-list collapsed" id="bride-list">
+                        <div class="account-item">
+                            <div class="account-details">
+                                <span class="bank-name">카카오뱅크</span>
+                                <span class="account-number">3333-11-2345678</span>
+                                <span class="account-holder">이솔</span>
+                            </div>
+                            <div class="account-buttons">
+                                <button class="copy-btn" onclick="copyAccount('3333-11-2345678', '이솔')">복사</button>
+                                <button class="pay-btn" onclick="openKakaoPay()">PAY</button>
+                            </div>
+                        </div>
+                        <div class="account-item">
+                            <div class="account-details">
+                                <span class="bank-name">하나은행</span>
+                                <span class="account-number">567-890-123456</span>
+                                <span class="account-holder">이어머니 (신부 어머니)</span>
+                            </div>
+                            <div class="account-buttons">
+                                <button class="copy-btn" onclick="copyAccount('567-890-123456', '이어머니')">복사</button>
+                                <button class="pay-btn" onclick="openKakaoPay()">PAY</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section class="contact">
             <h3>연락처</h3>
@@ -235,6 +314,97 @@
         // Update countdown every second
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+        // Copy account function
+        function copyAccount(accountNumber, holderName) {
+            const textToCopy = `${accountNumber} ${holderName}`;
+            
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showCopySuccess();
+                }).catch(() => {
+                    fallbackCopy(textToCopy);
+                });
+            } else {
+                fallbackCopy(textToCopy);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopySuccess();
+            } catch (err) {
+                console.error('복사 실패:', err);
+                alert('복사에 실패했습니다. 수동으로 복사해주세요.');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showCopySuccess() {
+            // Create toast notification
+            const toast = document.createElement('div');
+            toast.textContent = '계좌번호가 복사되었습니다!';
+            toast.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #333;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-size: 14px;
+                z-index: 1000;
+                animation: fadeInOut 2s ease-in-out;
+            `;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                document.body.removeChild(toast);
+            }, 2000);
+        }
+
+        // Toggle account list function
+        function toggleAccountList(type) {
+            const list = document.getElementById(type + '-list');
+            const icon = document.getElementById(type + '-icon');
+            
+            if (list.classList.contains('collapsed')) {
+                list.classList.remove('collapsed');
+                icon.classList.remove('rotated');
+            } else {
+                list.classList.add('collapsed');
+                icon.classList.add('rotated');
+            }
+        }
+
+        // KakaoPay function
+        function openKakaoPay() {
+            alert('카카오페이 기능은 실제 결제 시스템 연동이 필요합니다.\n개발 중인 기능입니다.');
+        }
+
+        // Add CSS animation for toast
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInOut {
+                0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+                20%, 80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+                100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>

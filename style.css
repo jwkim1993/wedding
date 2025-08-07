@@ -172,6 +172,175 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* Account Section */
+.account {
+    padding: 40px 20px;
+    background: white;
+}
+
+.account h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #c19a6b;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.account-section {
+    background: #fafafa;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.account-header:hover {
+    background: #e8e8e8;
+}
+
+.account-header h4 {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+    font-weight: 500;
+}
+
+.toggle-icon {
+    font-size: 0.8rem;
+    color: #666;
+    transition: transform 0.3s ease;
+}
+
+.toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+
+.account-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.account-list.collapsed {
+    max-height: 0;
+}
+
+.account-item {
+    background: white;
+    padding: 16px 20px;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.account-item:last-child {
+    border-bottom: none;
+}
+
+.account-item:hover {
+    background: #f9f9f9;
+}
+
+.account-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.account-buttons {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.bank-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #666;
+}
+
+.account-number {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    font-family: 'Monaco', 'Menlo', monospace;
+    letter-spacing: 1px;
+}
+
+.account-holder {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.copy-btn {
+    background: #c19a6b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 50px;
+}
+
+.copy-btn:hover {
+    background: #a8875a;
+    transform: translateY(-1px);
+}
+
+.copy-btn:active {
+    transform: translateY(0);
+    background: #966e42;
+}
+
+.pay-btn {
+    background: #fee500;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 50px;
+}
+
+.pay-btn:hover {
+    background: #fdd800;
+    transform: translateY(-1px);
+}
+
+.pay-btn:active {
+    transform: translateY(0);
+    background: #fccc00;
+}
+
 /* Venue Section */
 .venue {
     padding: 40px 20px;
@@ -435,6 +604,10 @@ footer p {
     .contact-info {
         flex-direction: column;
         gap: 25px;
+    }
+    
+    .account-info {
+        max-width: 350px;
     }
     
     .photo-grid {
