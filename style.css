@@ -18,84 +18,115 @@ body {
     min-height: 100vh;
 }
 
-/* Hero Section */
-.hero {
+/* Header Section */
+.header-section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.header-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Wedding Invitation Section */
+.wedding-invitation {
+    background-image: url('img/header2.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 20px;
     text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #ffeef8 0%, #f8f9fa 100%);
+    color: white;
+    position: relative;
 }
 
-.main-photo {
-    margin-bottom: 30px;
+.invitation-content {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
-.main-photo img {
-    width: 280px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.main-text h1 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: #c19a6b;
-    margin-bottom: 15px;
-    letter-spacing: 2px;
-}
-
-.subtitle {
-    font-size: 1rem;
-    color: #666;
-    line-height: 1.8;
-}
-
-/* Couple Names Section */
-.couple-names {
+/* Couple Names inside Wedding Invitation */
+.wedding-invitation .couple-names {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 40px 30px;
-    background: white;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
 }
 
-.groom, .bride {
+.wedding-invitation .groom, 
+.wedding-invitation .bride {
     flex: 1;
     text-align: center;
 }
 
-.couple-names h3 {
+.wedding-invitation .couple-names h3 {
     font-size: 0.9rem;
-    color: #888;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 10px;
     font-weight: 400;
 }
 
-.couple-names h2 {
-    font-size: 1.8rem;
-    color: #333;
+.wedding-invitation .couple-names h2 {
+    font-size: 1.6rem;
+    color: white;
     margin-bottom: 15px;
     font-weight: 500;
 }
 
-.couple-names p {
-    font-size: 0.85rem;
-    color: #666;
+.wedding-invitation .couple-names p {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.4;
 }
 
-.divider {
+.wedding-invitation .divider {
     font-size: 1.5rem;
-    color: #e91e63;
+    color: rgba(255, 255, 255, 0.9);
     margin: 0 20px;
+}
+
+/* Wedding Info inside Wedding Invitation */
+.wedding-invitation .wedding-info {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.wedding-invitation .wedding-info h3 {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.wedding-invitation .date {
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.wedding-invitation .time {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px;
 }
 
 /* Wedding Info Section */
 .wedding-info {
     text-align: center;
     padding: 40px 20px;
-    background: #fafafa;
+    background: white;
 }
 
 .wedding-info h3 {
@@ -368,10 +399,10 @@ body {
 }
 
 .address {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     color: #666;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    line-height: 1;
+    margin-bottom: 10px;
 }
 
 .contact p {
@@ -471,7 +502,7 @@ body {
 
 /* Contact Section */
 .contact {
-    padding: 40px 20px;
+    padding: 5px 10px;
     background: white;
 }
 
@@ -571,15 +602,63 @@ body {
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 30px 20px;
-    background: #333;
-    color: white;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
 }
 
-footer p {
-    font-size: 0.9rem;
+.footer-container {
+    position: relative;
+    width: 100%;
+}
+
+.footer-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.footer-text {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    color: white;
+    width: 90%;
+    max-width: 450px;
+}
+
+.footer-title {
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: 'Arial Black', Arial, sans-serif;
+    color: #fdebd1;
+    margin: 0 0 30px 0;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    transform: rotate(-2deg);
+}
+
+.footer-subtitle {
+    font-size: 1.4rem;
     font-weight: 300;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: white;
+    margin: 0 0 40px 0;
+    line-height: 1.6;
+    letter-spacing: 1px;
+}
+
+.footer-message {
+    font-size: 1rem;
+    line-height: 1.8;
+    font-weight: 300;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    color: white;
+    letter-spacing: 0.5px;
 }
 
 /* Responsive Design */

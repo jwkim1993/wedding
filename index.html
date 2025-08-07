@@ -10,36 +10,35 @@
 </head>
 <body>
     <div class="container">
-        <!-- Main Photo Section -->
-        <section class="hero">
-            <div class="main-photo">
-                <img src="wedding-image.png" alt="김재원 ♥ 이솔">
-            </div>
-            <div class="main-text">
-                <h1>결혼합니다</h1>
-                <p class="subtitle">두 사람이 하나가 되어<br>새로운 시작을 합니다</p>
+        <!-- Header Section -->
+        <section class="header-section">
+            <img src="img/header.svg" alt="Wedding Header" class="header-image">
+        </section>
+        <!-- Wedding Invitation Section -->
+        <section class="wedding-invitation">
+            <div class="invitation-content">
+                <!-- Couple Names Section -->
+                <div class="couple-names">
+                    <div class="groom">
+                        <h3>신랑</h3>
+                        <h2>김재원</h2>
+                        <p>김남식 · 이효순의 차남</p>
+                    </div>
+                    <div class="divider">♥</div>
+                    <div class="bride">
+                        <h3>신부</h3>
+                        <h2>이솔</h2>
+                        <p>방남일의 장녀</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- Couple Names Section -->
-        <section class="couple-names">
-            <div class="groom">
-                <h3>신랑</h3>
-                <h2>김재원</h2>
-                <p>김남식 · 이효순의 차남</p>
-            </div>
-            <div class="divider">♥</div>
-            <div class="bride">
-                <h3>신부</h3>
-                <h2>이솔</h2>
-                <p>방남일의 장녀</p>
-            </div>
-        </section>
-
-        <!-- Wedding Date & Time -->
+        <!-- Wedding Info Section -->
         <section class="wedding-info">
             <div class="date-time">
-                <h3>Wedding Day</h3>
+                <h3>예식 안내</h3>
                 <div class="date">2025년 10월 26일 일요일</div>
                 <div class="time">오후 12시 50분</div>
                 <div class="countdown">
@@ -70,26 +69,26 @@
         <section class="venue">
             <h3>예식장 안내</h3>
             <div class="venue-info">
-                <h4>빌라드지디 안양</h4>
-                <p class="address">경기 안양시 동안구 관악대로254<br>1층 갤러리아 홀</p>
+                <h4>빌라드지디 안양, 1층 갤러리아 홀</h4>
+                <p class="address">경기 안양시 동안구 관악대로254</p>
                 <div class="contact">
                     <p>문의: 031-382-3838</p>
                 </div>
             </div>
             <div id="map" class="map-container"></div>
             <div class="navigation-links">
-                <h4>길찾기</h4>
+                <h4>내비게이션</h4>
                 <div class="nav-buttons">
                     <a href="nmap://route/car?dname=빌라드지디 안양&dlat=37.4015140&dlng=126.9513167" class="nav-btn naver">
-                        <img src="https://i.namu.wiki/i/3QnZawfUC42pYVKbjsVv_0tC3oqo2ISbL0FD4qtZCKaHyXcecfmmQje9F6Rju1aEH6Km7Y37dKhiVsAQOGh5rTA5MCWg_-PBTsiLJ3COvtqOrd8_T7s9PnZiuNSLIOGBYnVIzBrYMtDM13X0d4Mcdg.webp" alt="네이버지도" class="nav-icon">
+                        <img src="icon/naver_map_icon.png" alt="네이버지도" class="nav-icon">
                         네이버지도
                     </a>
                     <a href="tmap://route?goalname=빌라드지디 안양&goalx=126.9513167&goaly=37.4015140" class="nav-btn tmap">
-                        <img src="https://i.namu.wiki/i/ZFltET3kGuGt8zALJoz61MhGKn3Kl4rNLhPHFFTFUAH6waHpwTIWE2KYtag4By4AxP9czlCsmM5LqvaOGM7zFpYmUrGkPqHVrSYNtWV2m69GnIfx0VOhk-ga_dZq6FNKoN-aS66l3RG362vSiMRPaA.svg" alt="티맵" class="nav-icon">
+                        <img src="icon/tmap_icon.jpeg" alt="티맵" class="nav-icon">
                         티맵
                     </a>
                     <a href="https://map.kakao.com/link/to/빌라드지디 안양,126.9513167,37.4015140" class="nav-btn kakao">
-                        <img src="https://i.namu.wiki/i/efXRuk8csK1K7Lhpx-E4deaH_NOnvcxp-7IhgdZImBGcab3YjTxuWwnLjJ5DaCAPm2v1wqJnc4WK78EnCVn5cA2lnp4PqPi2AIxX4BF7fIVaxOexOJf9Mv2axbK1giecYLI5opqDZ1WmwVK3rXwFDw.svg" alt="카카오내비" class="nav-icon">
+                        <img src="icon/kakao_navi_icon.png" alt="카카오내비" class="nav-icon">
                         카카오내비
                     </a>
                 </div>
@@ -194,25 +193,18 @@
             </div>
         </section>
 
-        <!-- Message Section -->
-        <section class="message">
-            <div class="message-content">
-                <p>
-                    두 사람이 만나 사랑으로 하나가 되어<br>
-                    새로운 인생을 시작하려 합니다.<br><br>
-                    
-                    귀한 걸음 하시어<br>
-                    저희의 출발을 축복해 주시면<br>
-                    더없는 기쁨이겠습니다.<br><br>
-                    
-                    감사합니다.
-                </p>
-            </div>
-        </section>
-
         <!-- Footer -->
         <footer>
-            <p>🤍 Thank you for celebrating with us 🤍</p>
+            <div class="footer-container">
+                <img src="img/footer.svg" alt="Wedding Footer" class="footer-image">
+                <div class="footer-text">
+                    <p class="footer-subtitle">둘이서 '우리'가 되기로 했어요.</p>
+                    <p class="footer-message">
+                        저희가 함께할 앞날을 따뜻한 마음으로 축복해 주시면<br><br>
+                        더없는 기쁨으로 간직하겠습니다.
+                    </p>
+                </div>
+            </div>
         </footer>
     </div>
 
