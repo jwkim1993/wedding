@@ -349,28 +349,6 @@ body {
     background: #966e42;
 }
 
-.pay-btn {
-    background: #fee500;
-    color: #000;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 16px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 50px;
-}
-
-.pay-btn:hover {
-    background: #fdd800;
-    transform: translateY(-1px);
-}
-
-.pay-btn:active {
-    transform: translateY(0);
-    background: #fccc00;
-}
 
 /* Venue Section */
 .venue {
