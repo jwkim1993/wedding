@@ -115,6 +115,61 @@ body {
 .time {
     font-size: 1.1rem;
     color: #666;
+    margin-bottom: 30px;
+}
+
+/* Countdown Section */
+.countdown {
+    margin-top: 20px;
+}
+
+.countdown-text {
+    font-size: 1rem;
+    color: #c19a6b;
+    margin-bottom: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 15px 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 60px;
+    border: 2px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.time-unit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    border-color: #e0e0e0;
+}
+
+.time-unit .number {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.time-unit .label {
+    font-size: 0.8rem;
+    color: #888;
+    font-weight: 400;
+    letter-spacing: 0.5px;
 }
 
 /* Venue Section */
@@ -384,6 +439,19 @@ footer p {
     
     .photo-grid {
         max-width: 280px;
+    }
+    
+    .countdown-timer {
+        gap: 15px;
+    }
+    
+    .time-unit {
+        min-width: 55px;
+        padding: 12px 10px;
+    }
+    
+    .time-unit .number {
+        font-size: 1.3rem;
     }
 }
 

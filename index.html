@@ -42,6 +42,27 @@
                 <h3>Wedding Day</h3>
                 <div class="date">2025년 10월 26일 일요일</div>
                 <div class="time">오후 12시 50분</div>
+                <div class="countdown">
+                    <div class="countdown-text">재원 ♥ 솔 결혼식까지</div>
+                    <div class="countdown-timer">
+                        <div class="time-unit">
+                            <div class="number" id="days">0</div>
+                            <div class="label">일</div>
+                        </div>
+                        <div class="time-unit">
+                            <div class="number" id="hours">0</div>
+                            <div class="label">시간</div>
+                        </div>
+                        <div class="time-unit">
+                            <div class="number" id="minutes">0</div>
+                            <div class="label">분</div>
+                        </div>
+                        <div class="time-unit">
+                            <div class="number" id="seconds">0</div>
+                            <div class="label">초</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -186,6 +207,34 @@
         } else {
             window.addEventListener('load', initMap);
         }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('2025-10-26T12:50:00');
+            const now = new Date();
+            const timeDiff = weddingDate - now;
+
+            if (timeDiff > 0) {
+                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+            } else {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
+            }
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
