@@ -90,18 +90,23 @@
             <h3>Gallery</h3>
             <div class="photo-grid collage-grid">
                 <!-- pictures_example.png 의 배치를 모사한 12개의 더미 이미지 -->
-                <div class="photo-item p1"><img src="img/1.jpeg" alt="gallery-1"></div>
-                <div class="photo-item p2"><img src="img/2.jpeg" alt="gallery-2"></div>
-                <div class="photo-item p3"><img src="img/3.jpeg" alt="gallery-3"></div>
-                <div class="photo-item p4"><img src="wedding-image.png" alt="gallery-4 (dummy)"></div>
-                <div class="photo-item p5"><img src="img/5.jpeg" alt="gallery-5"></div>
-                <div class="photo-item p6"><img src="img/6.jpeg" alt="gallery-6"></div>
-                <div class="photo-item p7"><img src="img/7.jpeg" alt="gallery-7"></div>
-                <div class="photo-item p8"><img src="wedding-image.png" alt="gallery-8 (dummy)"></div>
-                <div class="photo-item p9"><img src="img/9.jpeg" alt="gallery-9"></div>
-                <div class="photo-item p10"><img src="img/10.jpeg" alt="gallery-10"></div>
-                <div class="photo-item p11"><img src="img/11.jpeg" alt="gallery-11"></div>
-                <div class="photo-item p12"><img src="img/12.jpeg" alt="gallery-12"></div>
+                <div class="photo-item p1"><img src="img/1.jpeg" alt="gallery-1" loading="lazy" decoding="async"></div>
+                <div class="photo-item p2"><img src="img/2.jpeg" alt="gallery-2" loading="lazy" decoding="async"></div>
+                <div class="photo-item p3"><img src="img/3.jpeg" alt="gallery-3" loading="lazy" decoding="async"></div>
+                <div class="photo-item p4"><img src="wedding-image.png" alt="gallery-4 (dummy)" loading="lazy"
+                        decoding="async"></div>
+                <div class="photo-item p5"><img src="img/5.jpeg" alt="gallery-5" loading="lazy" decoding="async"></div>
+                <div class="photo-item p6"><img src="img/6.jpeg" alt="gallery-6" loading="lazy" decoding="async"></div>
+                <div class="photo-item p7"><img src="img/7.jpeg" alt="gallery-7" loading="lazy" decoding="async"></div>
+                <div class="photo-item p8"><img src="wedding-image.png" alt="gallery-8 (dummy)" loading="lazy"
+                        decoding="async"></div>
+                <div class="photo-item p9"><img src="img/9.jpeg" alt="gallery-9" loading="lazy" decoding="async"></div>
+                <div class="photo-item p10"><img src="img/10.jpeg" alt="gallery-10" loading="lazy" decoding="async">
+                </div>
+                <div class="photo-item p11"><img src="img/11.jpeg" alt="gallery-11" loading="lazy" decoding="async">
+                </div>
+                <div class="photo-item p12"><img src="img/12.jpeg" alt="gallery-12" loading="lazy" decoding="async">
+                </div>
             </div>
         </section>
 
@@ -122,7 +127,7 @@
                         <h4>신랑측</h4>
                         <span class="toggle-icon rotated" id="groom-icon">▼</span>
                     </div>
-                    <div class="account-list collapsed" id="groom-list">
+                    <div class="account-list collapsed" id="groom-list" aria-hidden="true">
                         <div class="account-item">
                             <div class="account-details">
                                 <span class="bank-name">신한은행</span>
@@ -161,7 +166,7 @@
                         <h4>신부측</h4>
                         <span class="toggle-icon rotated" id="bride-icon">▼</span>
                     </div>
-                    <div class="account-list collapsed" id="bride-list">
+                    <div class="account-list collapsed" id="bride-list" aria-hidden="true">
                         <div class="account-item">
                             <div class="account-details">
                                 <span class="bank-name">카카오뱅크</span>
@@ -308,14 +313,26 @@
         function toggleAccountList(type) {
             const list = document.getElementById(type + '-list');
             const icon = document.getElementById(type + '-icon');
+            // 강제 리플로우로 애니메이션/레이아웃 지연 방지
+            list.style.willChange = 'max-height';
 
+            // 자연스러운 높이 전환을 위해 계산된 높이 사용
+            const expandedHeight = list.scrollHeight + 'px';
             if (list.classList.contains('collapsed')) {
                 list.classList.remove('collapsed');
+                list.style.height = expandedHeight;
                 icon.classList.remove('rotated');
+                list.setAttribute('aria-hidden', 'false');
             } else {
+                list.style.height = list.scrollHeight + 'px';
+                // 다음 프레임에서 0으로 줄여 애니메이션 유도
+                requestAnimationFrame(() => { list.style.height = '0px'; });
                 list.classList.add('collapsed');
                 icon.classList.add('rotated');
+                list.setAttribute('aria-hidden', 'true');
             }
+            // 열고 닫기 후 will-change 해제
+            setTimeout(() => { list.style.willChange = 'auto'; }, 200);
         }
 
 
