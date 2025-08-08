@@ -39,14 +39,9 @@ body {
 
 /* Wedding Invitation Section */
 .wedding-invitation {
-    background-image: url('img/header2.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 60px 20px;
-    text-align: center;
-    color: white;
-    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .invitation-content {
@@ -57,14 +52,9 @@ body {
 
 /* Couple Names inside Wedding Invitation */
 .wedding-invitation .couple-names {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px 20px;
-    border-radius: 15px;
-    backdrop-filter: blur(5px);
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .wedding-invitation .groom,
@@ -153,6 +143,16 @@ body {
     font-size: 1.1rem;
     color: #666;
     margin-bottom: 30px;
+}
+
+/* Info section hero image */
+.info-hero-image {
+    /* 섹션 좌우 패딩(20px)까지 채워서 컨테이너 전체 너비로 표시 */
+    width: calc(100% + 100px);
+    max-width: none;
+    height: auto;
+    display: block;
+    margin: 0 -50px -60px -50px;
 }
 
 /* Countdown Section */
@@ -402,6 +402,16 @@ body {
     border: 1px solid #eee;
     margin: 0 auto;
     overflow: hidden;
+}
+
+/* Venue hero image (section3.svg) */
+.venue-hero-image {
+    /* 섹션 좌우 패딩(20px)까지 채워서 컨테이너 전체 너비로 표시 */
+    width: calc(100% + 100px);
+    max-width: none;
+    height: auto;
+    display: block;
+    margin: 0 -50px 0px -50px;
 }
 
 /* Navigation Links */
@@ -748,6 +758,15 @@ body {
 }
 
 /* Contact Section */
+.account-hero-image {
+    /* 섹션 좌우 패딩(20px)까지 채워서 컨테이너 전체 너비로 표시 */
+    width: calc(100% + 100px);
+    max-width: none;
+    height: auto;
+    display: block;
+    margin: 0 -50px -120px -50px;
+}
+
 .contact {
     padding: 5px 10px;
     background: white;

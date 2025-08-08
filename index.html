@@ -9,6 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
         rel="stylesheet">
     <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=wuc82dalfo"></script>
+    <!-- Open Graph / Twitter: 공유 썸네일 설정 (배포 시 절대 URL 권장) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="결혼합니다 💕">
+    <meta property="og:description" content="재원 ♥ 솔 결혼식에 초대합니다.">
+    <meta property="og:image" content="img/header_og_1200x630.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Wedding Header">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="결혼합니다 💕">
+    <meta name="twitter:description" content="재원 ♥ 솔 결혼식에 초대합니다.">
+    <meta name="twitter:image" content="img/header_og_1200x630.png">
 </head>
 
 <body>
@@ -19,31 +31,13 @@
         </section>
         <!-- Wedding Invitation Section -->
         <section class="wedding-invitation">
-            <div class="invitation-content">
-                <!-- Couple Names Section -->
-                <div class="couple-names">
-                    <div class="groom">
-                        <h3>신랑</h3>
-                        <h2>김재원</h2>
-                        <p>김남식 · 이효순의 차남</p>
-                    </div>
-                    <div class="divider">♥</div>
-                    <div class="bride">
-                        <h3>신부</h3>
-                        <h2>이솔</h2>
-                        <p>방남일의 장녀</p>
-                    </div>
-                </div>
-
-            </div>
+            <img src="img/footer.svg" alt="Wedding Footer" class="footer-image">
         </section>
 
         <!-- Wedding Info Section -->
         <section class="wedding-info">
             <div class="date-time">
-                <h3>예식 안내</h3>
-                <div class="date">2025년 10월 26일 일요일</div>
-                <div class="time">오후 12시 50분</div>
+                <img src="img/section2.svg" alt="예식 안내" class="info-hero-image" />
                 <div class="countdown">
                     <div class="countdown-text">재원 ♥ 솔 결혼식까지</div>
                     <div class="countdown-timer">
@@ -70,14 +64,7 @@
 
         <!-- Venue Information -->
         <section class="venue">
-            <h3>예식장 안내</h3>
-            <div class="venue-info">
-                <h4>빌라드지디 안양, 1층 갤러리아 홀</h4>
-                <p class="address">경기 안양시 동안구 관악대로254</p>
-                <div class="contact">
-                    <p>문의: 031-382-3838</p>
-                </div>
-            </div>
+            <img src="img/section3.svg" alt="예식장 안내" class="venue-hero-image" />
             <div id="map" class="map-container"></div>
             <div class="navigation-links">
                 <h4>내비게이션</h4>
@@ -128,7 +115,7 @@
 
         <!-- Account Section -->
         <section class="account">
-            <h3>마음 전하실 곳</h3>
+            <img src="img/section5.svg" alt="마음 전하실 곳" class="account-hero-image" />
             <div class="account-info">
                 <div class="account-section">
                     <div class="account-header" onclick="toggleAccountList('groom')">
@@ -204,13 +191,6 @@
         <footer>
             <div class="footer-container">
                 <img src="img/footer.svg" alt="Wedding Footer" class="footer-image">
-                <div class="footer-text">
-                    <p class="footer-subtitle">둘이서 '우리'가 되기로 했어요.</p>
-                    <p class="footer-message">
-                        저희가 함께할 앞날을 따뜻한 마음으로 축복해 주시면<br><br>
-                        더없는 기쁨으로 간직하겠습니다.
-                    </p>
-                </div>
             </div>
         </footer>
     </div>
