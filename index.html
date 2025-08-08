@@ -295,11 +295,16 @@
                 transform: translate(-50%, -50%);
                 background: #333;
                 color: white;
-                padding: 12px 20px;
+                padding: 10px 16px;
                 border-radius: 6px;
                 font-size: 14px;
                 z-index: 1000;
                 animation: fadeInOut 2s ease-in-out;
+                white-space: nowrap;          /* 한 줄 유지 */
+                word-break: keep-all;         /* 한국어 줄바꿈 방지 */
+                max-width: 92vw;              /* 작은 화면에서도 안전 */
+                overflow: hidden;             /* 혹시 넘치면 숨김 */
+                text-overflow: clip;          /* 말줄임 없이 잘림 방지 */
             `;
 
             document.body.appendChild(toast);
