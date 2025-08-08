@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=390, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <title>결혼합니다 💕</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=wuc82dalfo"></script>
 </head>
+
 <body>
     <div class="container">
         <!-- Header Section -->
@@ -98,21 +101,30 @@
         <!-- Gallery Section -->
         <section class="gallery">
             <h3>Gallery</h3>
-            <div class="photo-grid">
-                <div class="photo-item">
-                    <img src="wedding-image.png" alt="김재원 ♥ 이솔">
-                </div>
-                <div class="photo-item">
-                    <img src="wedding-image.png" alt="김재원 ♥ 이솔">
-                </div>
-                <div class="photo-item">
-                    <img src="wedding-image.png" alt="김재원 ♥ 이솔">
-                </div>
-                <div class="photo-item">
-                    <img src="wedding-image.png" alt="김재원 ♥ 이솔">
-                </div>
+            <div class="photo-grid collage-grid">
+                <!-- pictures_example.png 의 배치를 모사한 12개의 더미 이미지 -->
+                <div class="photo-item p1"><img src="wedding-image.png" alt="gallery-1"></div>
+                <div class="photo-item p2"><img src="wedding-image.png" alt="gallery-2"></div>
+                <div class="photo-item p3"><img src="wedding-image.png" alt="gallery-3"></div>
+                <div class="photo-item p4"><img src="wedding-image.png" alt="gallery-4"></div>
+                <div class="photo-item p5"><img src="wedding-image.png" alt="gallery-5"></div>
+                <div class="photo-item p6"><img src="wedding-image.png" alt="gallery-6"></div>
+                <div class="photo-item p7"><img src="wedding-image.png" alt="gallery-7"></div>
+                <div class="photo-item p8"><img src="wedding-image.png" alt="gallery-8"></div>
+                <div class="photo-item p9"><img src="wedding-image.png" alt="gallery-9"></div>
+                <div class="photo-item p10"><img src="wedding-image.png" alt="gallery-10"></div>
+                <div class="photo-item p11"><img src="wedding-image.png" alt="gallery-11"></div>
+                <div class="photo-item p12"><img src="wedding-image.png" alt="gallery-12"></div>
             </div>
         </section>
+
+        <!-- Photo Modal -->
+        <div id="photo-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-label="사진 보기">
+            <button class="modal-btn modal-close" aria-label="닫기">×</button>
+            <button class="modal-btn modal-prev" aria-label="이전 사진">‹</button>
+            <img class="modal-image" src="" alt="">
+            <button class="modal-btn modal-next" aria-label="다음 사진">›</button>
+        </div>
 
         <!-- Account Section -->
         <section class="account">
@@ -156,7 +168,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="account-section">
                     <div class="account-header" onclick="toggleAccountList('bride')">
                         <h4>신부측</h4>
@@ -254,7 +266,7 @@
         // Copy account function
         function copyAccount(accountNumber, holderName) {
             const textToCopy = `${accountNumber} ${holderName}`;
-            
+
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(textToCopy).then(() => {
                     showCopySuccess();
@@ -275,7 +287,7 @@
             document.body.appendChild(textArea);
             textArea.focus();
             textArea.select();
-            
+
             try {
                 document.execCommand('copy');
                 showCopySuccess();
@@ -283,7 +295,7 @@
                 console.error('복사 실패:', err);
                 alert('복사에 실패했습니다. 수동으로 복사해주세요.');
             }
-            
+
             document.body.removeChild(textArea);
         }
 
@@ -304,9 +316,9 @@
                 z-index: 1000;
                 animation: fadeInOut 2s ease-in-out;
             `;
-            
+
             document.body.appendChild(toast);
-            
+
             setTimeout(() => {
                 document.body.removeChild(toast);
             }, 2000);
@@ -316,7 +328,7 @@
         function toggleAccountList(type) {
             const list = document.getElementById(type + '-list');
             const icon = document.getElementById(type + '-icon');
-            
+
             if (list.classList.contains('collapsed')) {
                 list.classList.remove('collapsed');
                 icon.classList.remove('rotated');
@@ -335,8 +347,86 @@
                 20%, 80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
                 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
             }
+            /* 더블탭 확대 방지 */
+            body { touch-action: manipulation; }
         `;
         document.head.appendChild(style);
+
+        // Gallery Modal Logic
+        (function initGalleryModal() {
+            const galleryImages = Array.from(document.querySelectorAll('.gallery .photo-item img'));
+            if (galleryImages.length === 0) return;
+
+            const modal = document.getElementById('photo-modal');
+            const modalImg = modal.querySelector('.modal-image');
+            const closeBtn = modal.querySelector('.modal-close');
+            const prevBtn = modal.querySelector('.modal-prev');
+            const nextBtn = modal.querySelector('.modal-next');
+            let currentIndex = 0;
+
+            function openModal(index) {
+                currentIndex = index;
+                const { src, alt } = galleryImages[currentIndex];
+                modalImg.src = src;
+                modalImg.alt = alt || '갤러리 이미지';
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                modalImg.src = '';
+                document.body.style.overflow = '';
+            }
+
+            function showAdjacent(delta) {
+                const total = galleryImages.length;
+                currentIndex = (currentIndex + delta + total) % total;
+                const { src, alt } = galleryImages[currentIndex];
+                modalImg.src = src;
+                modalImg.alt = alt || '갤러리 이미지';
+            }
+
+            galleryImages.forEach((img, index) => {
+                img.style.cursor = 'zoom-in';
+                img.addEventListener('click', () => openModal(index));
+                img.setAttribute('tabindex', '0');
+                img.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') openModal(index);
+                });
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            prevBtn.addEventListener('click', () => showAdjacent(-1));
+            nextBtn.addEventListener('click', () => showAdjacent(1));
+
+            // 바깥 영역 클릭 시 닫기
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            // 키보드 제어
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('open')) return;
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') showAdjacent(-1);
+                if (e.key === 'ArrowRight') showAdjacent(1);
+            });
+
+            // 모바일 핀치/더블탭 줌 방지
+            document.addEventListener('gesturestart', (e) => e.preventDefault());
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', (e) => {
+                const now = Date.now();
+                if (now - lastTouchEnd <= 300) {
+                    e.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, { passive: false });
+        })();
     </script>
 </body>
+
 </html>
