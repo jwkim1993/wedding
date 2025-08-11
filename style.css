@@ -34,7 +34,7 @@ body {
 :root {
     /* 배경 이미지 높이에 비례한 위치(모바일에서도 겹침 유지) */
     --countdown-top: 31%;
-    --map-top: 43%;
+    --map-top: 42%;
     --gallery-top: 58%;
     --accounts-top: 92%;
     --side-padding: 0;
