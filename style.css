@@ -35,7 +35,7 @@ body {
     /* 배경 이미지 높이에 비례한 위치(모바일에서도 겹침 유지) */
     --countdown-top: 30.5%;
     --map-top: 42%;
-    --gallery-top: 57.8%;
+    --gallery-top: 57.4%;
     --accounts-top: 92%;
     --side-padding: 0;
     /* 기기 폭 대응: 280px~350px 사이에서 90vw 기준으로 반응 */
@@ -318,9 +318,13 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 16px 20px;
+    height: 50px;
     background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
+    padding-right: 48px;
+    /* 우측 화살표 공간 확보 */
 }
 
 .account-header:hover {
@@ -332,16 +336,26 @@ body {
     color: #333;
     margin: 0;
     font-weight: 500;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    /* 중앙 정렬 유지, 클릭은 헤더가 받음 */
 }
 
 .toggle-icon {
     font-size: 0.8rem;
     color: #666;
     transition: transform 0.3s ease;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .toggle-icon.rotated {
-    transform: rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
 }
 
 .account-list {
