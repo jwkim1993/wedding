@@ -33,9 +33,9 @@ body {
 /* Background stage layout */
 :root {
     /* 배경 이미지 높이에 비례한 위치(모바일에서도 겹침 유지) */
-    --countdown-top: 31%;
+    --countdown-top: 30.5%;
     --map-top: 42%;
-    --gallery-top: 58%;
+    --gallery-top: 57.8%;
     --accounts-top: 92%;
     --side-padding: 0;
     /* 기기 폭 대응: 280px~350px 사이에서 90vw 기준으로 반응 */
