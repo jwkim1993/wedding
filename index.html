@@ -104,12 +104,12 @@
                     <div class="account-list collapsed" id="groom-list" aria-hidden="true">
                         <div class="account-item">
                             <div class="account-details">
-                                <span class="bank-name">신한은행</span>
-                                <span class="account-number">110-123-456789</span>
+                                <span class="bank-name">하나은행</span>
+                                <span class="account-number">257-910572-98007</span>
                                 <span class="account-holder">김재원</span>
                             </div>
                             <div class="account-buttons">
-                                <button class="copy-btn" onclick="copyAccount('110-123-456789', '김재원')">복사</button>
+                                <button class="copy-btn" onclick="copyAccount('257-910572-98007', '김재원')">복사</button>
                             </div>
                         </div>
                         <div class="account-item">
@@ -143,12 +143,12 @@
                     <div class="account-list collapsed" id="bride-list" aria-hidden="true">
                         <div class="account-item">
                             <div class="account-details">
-                                <span class="bank-name">카카오뱅크</span>
-                                <span class="account-number">3333-11-2345678</span>
+                                <span class="bank-name">기업은행</span>
+                                <span class="account-number">010-8571-6512</span>
                                 <span class="account-holder">이솔</span>
                             </div>
                             <div class="account-buttons">
-                                <button class="copy-btn" onclick="copyAccount('3333-11-2345678', '이솔')">복사</button>
+                                <button class="copy-btn" onclick="copyAccount('010-8571-6512', '이솔')">복사</button>
                             </div>
                         </div>
                         <div class="account-item">
@@ -323,6 +323,10 @@
             }
             // 열고 닫기 후 will-change 해제
             setTimeout(() => { list.style.willChange = 'auto'; }, 200);
+            if (window.__updateExtraHeight) {
+                // 토글 애니메이션이 끝난 직후 한 번 더 보정
+                setTimeout(window.__updateExtraHeight, 260);
+            }
         }
 
 
@@ -439,31 +443,32 @@
             apply();
         })();
 
-        // 드롭다운 확장 높이만큼 하단 배경 확장
-        (function setupDynamicExtraHeight() {
+        // 드롭다운 확장 높이만큼 하단 배경 확장 (단일 옵저버/리스너; 누적 방지)
+        (function initDynamicExtraHeight() {
             const root = document.documentElement;
+            const stage = document.querySelector('.bg-stage');
+            const bg = document.querySelector('.bg-img');
             const accounts = document.querySelector('.layer-accounts') || document.querySelector('.account');
-            if (!accounts) return;
+            if (!stage || !bg || !accounts) return;
 
-            const observer = new ResizeObserver(() => {
-                // 계좌 섹션이 배경 하단을 넘긴 만큼을 계산
-                const stage = document.querySelector('.bg-stage');
-                const bg = document.querySelector('.bg-img');
-                if (!stage || !bg) return;
-
-                const stageRect = stage.getBoundingClientRect();
-                const bgRect = bg.getBoundingClientRect();
+            function updateExtraHeight() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-
+                const bgRect = bg.getBoundingClientRect();
+                const accountsRect = accounts.getBoundingClientRect();
                 const bgBottom = Math.round(bgRect.top + scrollTop + bgRect.height);
-                const accountsBottom = Math.round(accounts.getBoundingClientRect().top + scrollTop + accounts.scrollHeight);
+                const accountsBottom = Math.round(accountsRect.top + scrollTop + accounts.scrollHeight);
                 const extra = Math.max(0, accountsBottom - bgBottom);
                 root.style.setProperty('--extra-height', extra + 'px');
-            });
+            }
 
-            observer.observe(accounts);
-            window.addEventListener('resize', () => observer.disconnect());
-            window.addEventListener('resize', () => setupDynamicExtraHeight());
+            const ro = new ResizeObserver(() => updateExtraHeight());
+            ro.observe(accounts);
+            window.addEventListener('resize', updateExtraHeight, { passive: true });
+            window.addEventListener('orientationchange', updateExtraHeight);
+            updateExtraHeight();
+
+            // 토글 이후 높이 변경 반영 (기존 toggleAccountList에서 호출)
+            window.__updateExtraHeight = updateExtraHeight;
         })();
     </script>
 </body>
