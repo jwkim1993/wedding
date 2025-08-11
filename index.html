@@ -24,22 +24,13 @@
 </head>
 
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <section class="header-section">
-            <img src="img/header.svg" alt="Wedding Header" class="header-image">
-        </section>
-        <!-- Wedding Invitation Section -->
-        <section class="wedding-invitation">
-            <img src="img/footer.svg" alt="Wedding Footer" class="footer-image">
-        </section>
+    <div class="bg-stage">
+        <img src="img/background.png" alt="" class="bg-img" aria-hidden="true" />
 
-        <!-- Wedding Info Section -->
-        <section class="wedding-info">
+        <!-- Countdown Only -->
+        <section class="wedding-info layer layer-countdown">
             <div class="date-time">
-                <img src="img/section2.svg" alt="예식 안내" class="info-hero-image" />
                 <div class="countdown">
-                    <div class="countdown-text">재원 ♥ 솔 결혼식까지</div>
                     <div class="countdown-timer">
                         <div class="time-unit">
                             <div class="number" id="days">0</div>
@@ -62,12 +53,10 @@
             </div>
         </section>
 
-        <!-- Venue Information -->
-        <section class="venue">
-            <img src="img/section3.svg" alt="예식장 안내" class="venue-hero-image" />
+        <!-- Map + Navigation -->
+        <section class="venue layer layer-map">
             <div id="map" class="map-container"></div>
             <div class="navigation-links">
-                <h4>내비게이션</h4>
                 <div class="nav-buttons">
                     <a href="nmap://route/car?dname=빌라드지디 안양&dlat=37.4015140&dlng=126.9513167" class="nav-btn naver">
                         <img src="icon/naver_map_icon.png" alt="네이버지도" class="nav-icon">
@@ -85,11 +74,9 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section class="gallery">
-            <h3>Gallery</h3>
+        <!-- Gallery Section (images + modal) -->
+        <section class="gallery layer layer-gallery">
             <div class="photo-grid collage-grid">
-                <!-- pictures_example.png 의 배치를 모사한 12개의 더미 이미지 -->
                 <div class="photo-item p1"><img src="img/1.jpeg" alt="gallery-1" loading="lazy" decoding="async"></div>
                 <div class="photo-item p2"><img src="img/2.jpeg" alt="gallery-2" loading="lazy" decoding="async"></div>
                 <div class="photo-item p3"><img src="img/3.jpeg" alt="gallery-3" loading="lazy" decoding="async"></div>
@@ -106,17 +93,8 @@
             </div>
         </section>
 
-        <!-- Photo Modal -->
-        <div id="photo-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-label="사진 보기">
-            <button class="modal-btn modal-close" aria-label="닫기">×</button>
-            <button class="modal-btn modal-prev" aria-label="이전 사진">‹</button>
-            <img class="modal-image" src="" alt="">
-            <button class="modal-btn modal-next" aria-label="다음 사진">›</button>
-        </div>
-
-        <!-- Account Section -->
-        <section class="account">
-            <img src="img/section5.svg" alt="마음 전하실 곳" class="account-hero-image" />
+        <!-- Accounts Section (dropdowns only) -->
+        <section class="account layer layer-accounts">
             <div class="account-info">
                 <div class="account-section">
                     <div class="account-header" onclick="toggleAccountList('groom')">
@@ -187,13 +165,24 @@
                 </div>
             </div>
         </section>
+    </div>
 
-        <!-- Footer -->
-        <footer>
-            <div class="footer-container">
-                <img src="img/footer.svg" alt="Wedding Footer" class="footer-image">
-            </div>
-        </footer>
+    <!-- Photo Modal -->
+    <div id="photo-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-label="사진 보기">
+        <button class="modal-btn modal-close" aria-label="닫기">×</button>
+        <button class="modal-btn modal-prev" aria-label="이전 사진">‹</button>
+        <img class="modal-image" src="" alt="">
+        <button class="modal-btn modal-next" aria-label="다음 사진">›</button>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <img src="img/footer.svg" alt="Wedding Footer" class="footer-image">
+        </div>
+    </footer>
     </div>
 
     <script>

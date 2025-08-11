@@ -20,15 +20,67 @@ body {
 .container {
     max-width: 390px;
     margin: 0 auto;
-    background: white;
+    background: transparent;
     min-height: 100vh;
+}
+
+/* Background stage layout */
+:root {
+    --countdown-top: 990px;
+    --map-top: 1370px;
+    --gallery-top: 1860px;
+    --accounts-top: 2960px;
+    --side-padding: 0px;
+    --content-width: 350px;
+}
+
+.bg-stage {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.bg-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+}
+
+.layer {
+    position: absolute;
+    left: var(--side-padding);
+    right: var(--side-padding);
+}
+
+.layer-countdown {
+    top: var(--countdown-top);
+}
+
+.layer-map {
+    top: var(--map-top);
+}
+
+.layer-gallery {
+    top: var(--gallery-top);
+}
+
+.layer-accounts {
+    top: var(--accounts-top);
+}
+
+.layer-map .map-container,
+.layer-gallery .photo-grid,
+.layer-accounts .account-info {
+    width: var(--content-width);
+    margin: 0 auto;
 }
 
 /* Header Section */
 .header-section {
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    display: none;
 }
 
 .header-image {
@@ -39,9 +91,7 @@ body {
 
 /* Wedding Invitation Section */
 .wedding-invitation {
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    display: none;
 }
 
 .invitation-content {
@@ -122,7 +172,7 @@ body {
 .wedding-info {
     text-align: center;
     padding: 40px 20px;
-    background: white;
+    background: transparent;
 }
 
 .wedding-info h3 {
@@ -184,7 +234,7 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     min-width: 60px;
-    border: 2px solid #f0f0f0;
+    border: 2px solid rgba(255, 233, 200, 0.6);
     transition: all 0.3s ease;
 }
 
@@ -212,7 +262,7 @@ body {
 /* Account Section */
 .account {
     padding: 40px 20px;
-    background: white;
+    background: transparent;
 }
 
 .account h3 {
@@ -232,10 +282,10 @@ body {
 }
 
 .account-section {
-    background: #fafafa;
+    background: white;
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid #eee;
+    border: 1px solid rgba(238, 238, 238, 0.6);
 }
 
 .account-header {
@@ -243,7 +293,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 16px 20px;
-    background: #f0f0f0;
+    background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -285,7 +335,7 @@ body {
 .account-item {
     background: white;
     padding: 16px 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(238, 238, 238, 0.6);
     transition: all 0.3s ease;
     display: flex;
     justify-content: space-between;
@@ -297,7 +347,7 @@ body {
 }
 
 .account-item:hover {
-    background: #f9f9f9;
+    background: rgba(249, 249, 249, 0.2);
 }
 
 .account-details {
@@ -359,15 +409,11 @@ body {
 /* Venue Section */
 .venue {
     padding: 40px 20px;
-    background: white;
+    background: transparent;
 }
 
 .venue h3 {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #c19a6b;
-    margin-bottom: 30px;
-    font-weight: 400;
+    display: none;
 }
 
 .venue-info {
@@ -399,7 +445,8 @@ body {
     max-width: 350px;
     height: 200px;
     border-radius: 10px;
-    border: 1px solid #eee;
+    border: 2px solid rgba(255, 233, 200, 0.6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
     overflow: hidden;
 }
@@ -416,7 +463,7 @@ body {
 
 /* Navigation Links */
 .navigation-links {
-    margin-top: 20px;
+    margin-top: 100px;
     text-align: center;
 }
 
@@ -445,7 +492,8 @@ body {
     font-weight: 500;
     color: #333;
     background: white;
-    border: 1px solid #ddd;
+    border: 2px solid rgba(255, 233, 200, 0.6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     min-width: 90px;
     justify-content: center;
@@ -467,15 +515,11 @@ body {
 /* Gallery Section */
 .gallery {
     padding: 40px 20px;
-    background: #fafafa;
+    background: transparent;
 }
 
 .gallery h3 {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #c19a6b;
-    margin-bottom: 30px;
-    font-weight: 400;
+    display: none;
 }
 
 .photo-grid {
@@ -863,10 +907,7 @@ body {
 
 /* Footer */
 footer {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: transparent;
+    display: none;
 }
 
 .footer-container {
