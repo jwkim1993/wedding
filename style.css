@@ -26,12 +26,14 @@ body {
 
 /* Background stage layout */
 :root {
-    --countdown-top: 990px;
-    --map-top: 1370px;
-    --gallery-top: 1860px;
-    --accounts-top: 2960px;
-    --side-padding: 0px;
-    --content-width: 350px;
+    /* 배경 이미지 높이에 비례한 위치(모바일에서도 겹침 유지) */
+    --countdown-top: 31%;
+    --map-top: 43%;
+    --gallery-top: 58%;
+    --accounts-top: 92%;
+    --side-padding: 0;
+    /* 기기 폭 대응: 280px~350px 사이에서 90vw 기준으로 반응 */
+    --content-width: clamp(280px, 90vw, 350px);
 }
 
 .bg-stage {
@@ -53,6 +55,7 @@ body {
     position: absolute;
     left: var(--side-padding);
     right: var(--side-padding);
+    z-index: 2;
 }
 
 .layer-countdown {
@@ -74,7 +77,7 @@ body {
 .layer-map .map-container,
 .layer-gallery .photo-grid,
 .layer-accounts .account-info {
-    width: var(--content-width);
+    width: min(92%, var(--content-width));
     margin: 0 auto;
 }
 
