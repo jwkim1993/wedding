@@ -36,7 +36,7 @@ body {
     --countdown-top: 23.5%;
     --map-top: 31.5%;
     --car-map-top: 44.7%;
-    --gallery-top: 58.8%;
+    --gallery-top: 70.8%;
     --accounts-top: 92%;
     --side-padding: 0;
     /* 기기 폭 대응: 280px~350px 사이에서 90vw 기준으로 반응 */
@@ -497,6 +497,8 @@ body {
     height: 200px;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: none;
+    /* 기본: 테두리 없음 (윗 지도) */
     margin: 0 auto;
     overflow: hidden;
 }
@@ -543,10 +545,21 @@ body {
     color: #333;
     background: white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: none;
+    /* 기본: 테두리 없음 (윗 지도) */
     transition: all 0.3s ease;
     min-width: 90px;
     justify-content: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 아래(car) 지도와 버튼에만 검은 테두리 */
+.layer-car-map .map-container {
+    border: 1px solid rgba(238, 238, 238, 0.6);
+}
+
+.layer-car-map .nav-btn {
+    border: 1px solid rgba(238, 238, 238, 0.6);
 }
 
 .nav-btn:hover {
