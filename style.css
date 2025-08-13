@@ -33,8 +33,9 @@ body {
 /* Background stage layout */
 :root {
     /* 배경 이미지 높이에 비례한 위치(모바일에서도 겹침 유지) */
-    --countdown-top: 33.3%;
-    --map-top: 44.3%;
+    --countdown-top: 23.5%;
+    --map-top: 31.5%;
+    --car-map-top: 44.7%;
     --gallery-top: 58.8%;
     --accounts-top: 92%;
     --side-padding: 0;
@@ -88,6 +89,10 @@ body {
     top: var(--map-top);
 }
 
+.layer-car-map {
+    top: var(--car-map-top);
+}
+
 .layer-gallery {
     top: var(--gallery-top);
 }
@@ -97,6 +102,7 @@ body {
 }
 
 .layer-map .map-container,
+.layer-car-map .map-container,
 .layer-gallery .photo-grid,
 .layer-accounts .account-info {
     width: min(92%, var(--content-width));
@@ -250,16 +256,22 @@ body {
     flex-wrap: wrap;
 }
 
+/* no shadow */
 .time-unit {
     display: flex;
     flex-direction: column;
     align-items: center;
     background: white;
-    padding: 15px 12px;
-    border-radius: 12px;
+    padding: 0;
+    width: var(--time-circle, 65px);
+    aspect-ratio: 1 / 1;
+    /* 완전한 정원 비율 유지 */
+    justify-content: center;
+    gap: 2px;
+    box-sizing: border-box;
+    border-radius: 50%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    min-width: 60px;
-    border: 2px solid rgba(255, 233, 200, 0.6);
+    min-width: auto;
     transition: all 0.3s ease;
 }
 
@@ -272,14 +284,14 @@ body {
 .time-unit .number {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #333;
-    margin-bottom: 5px;
+    color: rgba(89, 190, 120, 1);
+    margin-bottom: -10px;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
 .time-unit .label {
-    font-size: 0.8rem;
-    color: #888;
+    font-size: 0.6rem;
+    color: rgba(194, 231, 205, 1);
     font-weight: 400;
     letter-spacing: 0.5px;
 }
@@ -484,7 +496,6 @@ body {
     max-width: 350px;
     height: 200px;
     border-radius: 10px;
-    border: 2px solid rgba(255, 233, 200, 0.6);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
     overflow: hidden;
@@ -502,7 +513,7 @@ body {
 
 /* Navigation Links */
 .navigation-links {
-    margin-top: 80px;
+    margin-top: 120px;
     text-align: center;
 }
 
@@ -525,13 +536,12 @@ body {
     align-items: center;
     gap: 6px;
     padding: 10px 16px;
-    border-radius: 25px;
+    border-radius: 10px;
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 500;
     color: #333;
     background: white;
-    border: 2px solid rgba(255, 233, 200, 0.6);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     min-width: 90px;

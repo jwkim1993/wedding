@@ -25,7 +25,7 @@
 
 <body>
     <div class="bg-stage">
-        <img src="img/background4.png" alt="" class="bg-img" aria-hidden="true" />
+        <img src="img/background5.png" alt="" class="bg-img" aria-hidden="true" />
 
         <!-- Countdown Only -->
         <section class="wedding-info layer layer-countdown">
@@ -55,6 +55,28 @@
 
         <!-- Map + Navigation -->
         <section class="venue layer layer-map">
+            <div id="map" class="map-container"></div>
+            <div class="navigation-links">
+                <div class="nav-buttons">
+                    <a href="nmap://route/car?dname=빌라드지디 안양&dlat=37.4015140&dlng=126.9513167" class="nav-btn naver">
+                        <img src="icon/naver_map_icon.png" alt="네이버지도" class="nav-icon">
+                        네이버지도
+                    </a>
+                    <a href="tmap://route?goalname=빌라드지디 안양&goalx=126.9513167&goaly=37.4015140" class="nav-btn tmap">
+                        <img src="icon/tmap_icon.jpeg" alt="티맵" class="nav-icon">
+                        티맵
+                    </a>
+                    <a href="kakaonavi://navigate?name=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%95%88%EC%96%91&x=126.9513167&y=37.4015140&coord_type=wgs84"
+                        class="nav-btn kakao">
+                        <img src="icon/kakao_navi_icon.png" alt="카카오내비" class="nav-icon">
+                        카카오내비
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map + Navigation -->
+        <section class="venue layer layer-car-map">
             <div id="map" class="map-container"></div>
             <div class="navigation-links">
                 <div class="nav-buttons">
