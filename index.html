@@ -77,26 +77,29 @@
 
         <!-- Car Map + Navigation (separate coordinates) -->
         <section class="venue layer layer-car-map">
-            <div id="map-car" class="map-container" data-lat="37.402000" data-lng="126.952000"
+            <div id="map-car" class="map-container" data-lat="37.402059861636765" data-lng="126.96876813213287"
                 data-title="빌라드지디 안양(주차/대기)"></div>
             <div class="navigation-links">
                 <div class="nav-buttons">
-                    <a href="nmap://route/car?dname=빌라드지디 안양(주차/대기)&dlat=37.402000&dlng=126.952000"
-                        class="nav-btn naver">
+                    <a href="nmap://route/car?dname=빌라드지디 안양 제2주차장&dlat=37.40206&dlng=126.968768" class="nav-btn naver">
                         <img src="icon/naver_map_icon.png" alt="네이버지도" class="nav-icon">
                         네이버지도
                     </a>
-                    <a href="tmap://route?goalname=빌라드지디 안양(주차/대기)&goalx=126.952000&goaly=37.402000"
-                        class="nav-btn tmap">
+                    <a href="tmap://route?goalname=빌라드지디 안양 제2주차장&goalx=126.968768&goaly=37.40206" class="nav-btn tmap">
                         <img src="icon/tmap_icon.jpeg" alt="티맵" class="nav-icon">
                         티맵
                     </a>
-                    <a href="kakaonavi://navigate?name=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%95%88%EC%96%91(%EC%A3%BC%EC%B0%A8)&x=126.952000&y=37.402000&coord_type=wgs84"
+                    <a href="kakaonavi://navigate?name=%EB%B9%8C%EB%9D%BC%EB%93%9C%EC%A7%80%EB%94%94%20%EC%95%88%EC%96%91%20%EC%A3%BC%EC%B0%A8%EC%9E%A5&x=126.968768&y=37.40206&coord_type=wgs84"
                         class="nav-btn kakao">
                         <img src="icon/kakao_navi_icon.png" alt="카카오내비" class="nav-icon">
                         카카오내비
                     </a>
                 </div>
+            </div>
+            <!-- Additional car maps without nav buttons -->
+            <div id="map-car-2" class="map-container" data-lat="37.402059" data-lng="126.968768" data-title="주차장">
+            </div>
+            <div id="map-car-3" class="map-container" data-lat="37.403782" data-lng="126.976060" data-title="인덕원역 8번출구">
             </div>
         </section>
 
@@ -225,21 +228,25 @@
             });
 
             // Secondary car map (if present)
-            var carMapEl = document.getElementById('map-car');
-            if (carMapEl) {
-                var lat = parseFloat(carMapEl.getAttribute('data-lat')) || 37.402000;
-                var lng = parseFloat(carMapEl.getAttribute('data-lng')) || 126.952000;
-                var title = carMapEl.getAttribute('data-title') || '빌라드지디 안양(주차/대기)';
-                var carMap = new naver.maps.Map('map-car', {
+            function initSingleCarMap(id, defLat, defLng, defTitle) {
+                var el = document.getElementById(id);
+                if (!el) return;
+                var lat = parseFloat(el.getAttribute('data-lat')) || defLat;
+                var lng = parseFloat(el.getAttribute('data-lng')) || defLng;
+                var title = el.getAttribute('data-title') || defTitle;
+                var instance = new naver.maps.Map(id, {
                     center: new naver.maps.LatLng(lat, lng),
                     zoom: 16
                 });
                 new naver.maps.Marker({
                     position: new naver.maps.LatLng(lat, lng),
-                    map: carMap,
+                    map: instance,
                     title: title
                 });
             }
+            initSingleCarMap('map-car', 37.402000, 126.952000, '빌라드지디 안양(주차/대기)');
+            initSingleCarMap('map-car-2', 37.401400, 126.952500, '주차장 B');
+            initSingleCarMap('map-car-3', 37.401900, 126.951800, '픽업/하차 지점');
         }
 
         if (typeof naver !== 'undefined') {

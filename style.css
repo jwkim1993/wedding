@@ -36,11 +36,16 @@ body {
     --countdown-top: 23.5%;
     --map-top: 31.5%;
     --car-map-top: 44.7%;
-    --gallery-top: 70.8%;
-    --accounts-top: 92%;
+    --gallery-top: 70.5%;
+    --accounts-top: 94.2%;
     --side-padding: 0;
     /* 기기 폭 대응: 280px~350px 사이에서 90vw 기준으로 반응 */
     --content-width: clamp(280px, 90vw, 350px);
+    --nav-top-gap: 120px;
+    /* 지도 아래 내비 버튼과의 간격 */
+    --car-map-gap: 180px;
+    /* car-map 내 지도들/버튼 사이 간격 */
+    --map-gap: 105px;
     /* 배경 이미지 실제 하단 오프셋(px 또는 %) - JS로 갱신 가능 */
     --bg-bottom: 2000px;
 }
@@ -252,7 +257,7 @@ body {
 .countdown-timer {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
@@ -263,7 +268,7 @@ body {
     align-items: center;
     background: white;
     padding: 0;
-    width: var(--time-circle, 65px);
+    width: var(--time-circle, 75px);
     aspect-ratio: 1 / 1;
     /* 완전한 정원 비율 유지 */
     justify-content: center;
@@ -285,7 +290,7 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     color: rgba(89, 190, 120, 1);
-    margin-bottom: -10px;
+    margin-bottom: -5px;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -515,8 +520,21 @@ body {
 
 /* Navigation Links */
 .navigation-links {
-    margin-top: 120px;
+    margin-top: var(--nav-top-gap);
     text-align: center;
+}
+
+/* car-map 전용 간격 규칙 */
+.layer-car-map .navigation-links {
+    margin-bottom: var(--car-map-gap);
+}
+
+.layer-car-map .navigation-links+.map-container {
+    margin-top: var(--car-map-gap);
+}
+
+.layer-car-map .map-container+.map-container {
+    margin-top: var(--map-gap);
 }
 
 .navigation-links h4 {
